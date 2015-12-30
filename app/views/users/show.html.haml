@@ -1,0 +1,46 @@
+%div.header
+	%h1
+		%div.container.user-show
+			%div
+				= image_tag @user.avatar.url, :class => "user-avatar"
+			%h1
+				= @user.first_name
+				= @user.last_name
+
+%div.container
+	%div.row
+		- @user.posts.all.each do |post|
+
+			- if (current_user!=post.user)
+				%div.col.s6
+					.card.medium
+						.card-image
+							= image_tag post.file_name.thumb.url
+							%span.card-title
+								= post.title
+						.card-content
+							%p
+								= post.header
+						.card-action
+							= link_to "voir l'article", post
+			- else
+				%div.col.s6
+					.card.medium
+						.card-image
+							= image_tag post.file_name.thumb.url
+						.card-content
+							%span.card-title.activator.grey-text.text-darken-4
+								= post.title
+								%i.material-icons.right more_vert
+							%p
+								= post.header
+						.card-reveal
+							%span.card-title.grey-text.text-darken-4
+								Modifier ou supprimer
+								%i.material-icons.right close
+							%div.post-edit-button.preview
+								-if(current_user==post.user)
+									=link_to "éditer", (edit_post_path([post])),:class => "btn btn-primary"
+
+									= form_tag(post_path([post]), method: "delete") do
+										= button_tag 'supprimer' , class: 'btn btn-danger delete-photo',type: :submit,data: { id: post.id, name:post.title }

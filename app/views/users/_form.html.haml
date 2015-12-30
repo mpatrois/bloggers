@@ -1,0 +1,24 @@
+%div.form-edit
+  = form_for @user do |f|
+    - if @user.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+
+    %div.input-group
+      = f.label :first_name
+      = f.text_field :first_name,:class => "form-control"
+
+    %div.input-group
+      = f.label :last_name
+      = f.text_field :first_name,:class => "form-control"
+    %div.input-group
+      = f.label :email
+      = f.text_field :email, :class => "form-control" 
+    %div.input-group
+      = f.label :password
+      = f.text_field :password, :class => "form-control"
+    %div
+      = f.submit 'Save' ,:class => "btn btn-success"

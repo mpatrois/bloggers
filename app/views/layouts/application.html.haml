@@ -1,0 +1,62 @@
+!!! 5
+%html(lang="en")
+	%head
+		%meta(charset="utf-8")
+		%meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+		%meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		%title= content_for?(:title) ? yield(:title) : "Web"
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+
+	%body
+		%nav
+			%div.container
+				%div.nav-wrapper
+					= link_to root_path, :class =>"brand-logo" do
+						= image_tag "/logo.svg" ,:id => "img-logo"
+						The Bloggers
+					%a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
+						%i.material-icons menu
+					%ul#nav-mobile.right.hide-on-med-and-down
+						%li{:class => (current_page?(posts_path) ? "active" : "")}
+							= link_to "Les articles", posts_path
+						%li{:class => (current_page?(users_path) ? "active" : "")}
+							= link_to "Les auteurs", users_path
+						- if user_signed_in?
+							%li{:class => (current_page?(new_post_path) ? "active" : "")}
+								= link_to "Poster un article", new_post_path
+							%li{:class => (current_page?(current_user) ? "active" : "")}
+								= link_to "Mes articles", current_user
+							%li
+								= link_to('Deconnexion', destroy_user_session_path, :method => :delete)
+						- else
+							%li{:class => (current_page?(new_user_path) ? "active" : "")}
+								= link_to "S'inscrire", new_user_registration_path
+							%li{:class => ''}
+								= link_to "Se connecter", new_user_session_path
+					%ul#mobile-demo.side-nav
+						%li{:class => (current_page?(posts_path) ? "active" : "")}
+							= link_to "Les articles", posts_path
+						%li{:class => (current_page?(users_path) ? "active" : "")}
+							= link_to "Les auteurs", users_path
+						- if user_signed_in?
+							%li{:class => (current_page?(new_post_path) ? "active" : "")}
+								= link_to "Poster un article", new_post_path
+							%li{:class => (current_page?(current_user) ? "active" : "")}
+								= link_to "Mes articles", current_user
+							%li
+								= link_to('Deconnexion', destroy_user_session_path, :method => :delete)
+						- else
+							%li{:class => (current_page?(new_user_path) ? "active" : "")}
+								= link_to "S'inscrire", new_user_registration_path
+							%li{:class => ''}
+								= link_to "Se connecter", new_user_session_path
+
+		= yield
+		/ %div.container
+		/ 	- if !flash[:success].blank?
+		/ 		%div.alert.alert-success
+		/ 			= flash[:success]
+		
+		= javascript_include_tag "application"
+

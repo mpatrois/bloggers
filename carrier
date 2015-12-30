@@ -1,0 +1,419 @@
+    1  ls
+    2  cd Bureau/
+    3  ls
+    4  cd ruby-2.2.3/
+    5  ls
+    6  ./configure 
+    7  apt-get install build-essential
+    8  sudp apt-get install build-essential
+    9  sudo apt-get install build-essential
+   10  ./configure 
+   11  make
+   12  sudo make install
+   13  gem install rails
+   14  rvm pkg install openssl
+   15  rvm reinstall ruby-2.0.0-p0 --with-gcc=gcc-4.7 --with-openssl-dir=$rvm_path/usr
+   16  gem install rails
+   17  sudo apt-get install zlib1g-dev
+   18  rvm
+   19  gem install rails
+   20  ./configure 
+   21  make
+   22  sudo make
+   23  sudo make install
+   24  gem install rails
+   25  sudo apt-get install libssl-dev
+   26  ./configure 
+   27  sudo make
+   28  sudo make install
+   29  sudo apt-get install zlib
+   30  sudo make install
+   31  gem install rails
+   32  gems install rails
+   33  gem install rails
+   34  sudo apt-get install --reinstall zlibc zlib1g zlib1g-dev
+   35  ./configure 
+   36  sudo make
+   37  sudo make install
+   38  sudo apt-get install rdoc
+   39  gem update --system
+   40  wich ruby
+   41  which ruby
+   42  $ readlink -f /usr/bin/ruby
+   43  dpkg -S /usr/bin/ruby2.1
+   44  apt-get purge ruby2.de
+   45  sudo apt-get purge ruby2.1
+   46  cd Bureau/
+   47  ls
+   48  rm -rf ruby-2.2.3/
+   49  ls
+   50  sudo apt-get install ruby-full
+   51  gem install rails
+   52  curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-ubuntu.sh
+   53  sudo apt-get install curl
+   54  curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-ubuntu.sh
+   55  rails new app
+   56  sudo apt-get install ruby-railties
+   57  rails new app
+   58  sudo apt-get install zlib
+   59  sudo gem update --system t
+   60  rvm pkg install openssl
+   61  \curl -sSL https://get.rvm.io | bash -s stable --rails
+   62  sudo \curl -sSL https://get.rvm.io | bash -s stable --rails
+   63  curl -sSL https://get.rvm.io | bash -s stable --rails
+   64  curl -sSL https://rvm.io/mpapis.asc | gpg2 --import 
+   65  rvm pkg install openssl
+   66  rails new app
+   67  sudo apt-get install zlib1g-dev
+   68  sudo apt-get install libpng-dev
+   69  sudo gem update --system t
+   70  ./configure sudo apt-get update
+   71  sudo apt-get update
+   72  sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+   73  gem install rails
+   74  sudo apt-get ruby-full
+   75  rbenv install 2.2.3
+   76  sudo apt-get install rbenv 
+   77  brew insall 2.2.3
+   78  rbenv install 2.2.3
+   79  brew
+   80  gem
+   81  gem install
+   82  gem update
+   83  sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev gem libyaml-dev
+   84  bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+   85  echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bashrc
+   86  source ~/.bashrc
+   87  rvm
+   88  ln -s /usr/local/rvm/bin/rvm /usr/bin/
+   89  sudo ln -s /usr/local/rvm/bin/rvm /usr/bin/
+   90  rvm
+   91  rvm info
+   92  ls
+   93  cd ..
+   94  ls
+   95  cd ..
+   96  ls
+   97  cd Téléchargements/
+   98  ls
+   99  sudo dpkg -i sublime-text_build-3083_amd64.deb 
+  100  sudo apt-get install sublime-text
+  101  ls
+  102  subl
+  103  rails generate model Todo item:string
+  104  rake db:migrate
+  105  rails generate controller todos
+  106  resources :todos
+  107  rails resources :todos
+  108  gem "haml-rails", "~> 0.9"
+  109  rake haml:erb2haml
+  110  gem 'haml-rails', '>= 0.3.4', :group => :development
+  111  gem 'haml'
+  112  ls
+  113  nano Gemfile
+  114  bundle install
+  115  rails generate model Task title:string note:text completed:date
+  116  rake db:migrate RAILS_ENV=development
+  117  sudo adduser patrois rvm
+  118  \curl -sSL https://get.rvm.io | bash -s stable --ruby
+  119  source /home/patrois/.rvm/scripts/rvm
+  120  rvm info
+  121  gem install rails
+  122  rails new app
+  123  ls
+  124  cd Bureau/
+  125  ls
+  126  cd app/
+  127  rails server
+  128  sudo apt-get install nodejs
+  129  rails server
+  130  ntm
+  131  ls
+  132  cd Bureau/
+  133  mkdir webgl
+  134  cd webgl/
+  135  nano projet.html
+  136  top
+  137  pwd
+  138  pid
+  139  cd Bureau/
+  140  ls
+  141  cd app/
+  142  ls
+  143  rails server
+  144  ruby
+  145  ruby console
+  146  rails console
+  147  rake console
+  148  cd Bureau/
+  149  zip -r emmanuel_patrois.zip Emmanuel_Patrois/
+  150  ls
+  151  cd app
+  152  cd Bureau/app/
+  153  ls
+  154  rails server
+  155  cat
+  156  eject
+  157  cd Bureau/sqlitebrowser-3.7.0/
+  158  ls
+  159  cmake .
+  160  sudo apt-get install cmake
+  161  cmake .
+  162  cmake
+  163  cmake .
+  164  make
+  165  sudo cmake .
+  166  mysql
+  167  mysql -r
+  168  mysql -u 
+  169  mysql -u root 
+  170  gem install mysql
+  171  myql -u root
+  172  msyql -u root
+  173  mysql -u root
+  174  git
+  175  cd Bureau/
+  176  git clone
+  177  git clone https://github.com/mpatrois/rails.git
+  178  ls
+  179  cd rails/
+  180  ls
+  181  cd app/
+  182  bundle install
+  183  sudo apt-get install libmysql-ruby libmysqlclient-dev mysql-server mysql-client mysql-common
+  184  sudo apt-get install ruby-mysql libmysqlclient-dev mysql-server mysql-client mysql-common
+  185  bundle install
+  186  ls
+  187  rake db:migrate
+  188  cd Bureau/
+  189  ls
+  190  rails new demo
+  191  cd demo/
+  192  ls -p
+  193  ls
+  194  rake about
+  195  rails server
+  196  cd Bureau/demo/
+  197  rails generate Say hello goodbye
+  198  rails generate controller Say hello goodbye
+  199  bundle install
+  200  cd ..
+  201  ls
+  202  cd demo/
+  203  rails db
+  204  cd ../depot/
+  205  cd Bureau/
+  206  rails new depot
+  207  rails generate scaffold Product title:string description:text image_url:string price:decimal
+  208  cd depot
+  209  rails generate scaffold Product title:string description:text image_url:string price:decimal
+  210  rake db:migrate
+  211  rake db:seed
+  212  cd Bureau/demo/
+  213  rails server
+  214  ls
+  215  cd ..
+  216  cd depot/
+  217  ls
+  218  rails server
+  219  ls
+  220  cd Bureau/rails/
+  221  ls
+  222  ssh
+  223  ls
+  224  nano Gemfile
+  225  ssh epatrois@info-ssh2.iut.u-bordeaux.fr
+  226  cd
+  227  cd Bureau/rails/
+  228  git pull
+  229  cd Bureau/
+  230  ls
+  231  cd depot/
+  232  bundle install
+  233  rails server
+  234  bundle install
+  235  cd ..
+  236  ls
+  237  cd rails/
+  238  rails server
+  239  bundle install
+  240  rails server
+  241  rake db:migrate
+  242  rails server
+  243  bundle install
+  244  rails server
+  245  mysql -u root
+  246  rails new blog
+  247  mv blog/ Bureau/
+  248  cd Bureau/blog/
+  249  bundle instzll
+  250  bundle install
+  251  rails generate scaffold Post title:string description:text header:text
+  252  rails db
+  253  rails generate scaffold User name:string email:string password:string
+  254  rails db:migrate
+  255  rake db:migrate
+  256  rails server
+  257  rake db:migrate reset
+  258  rake db:reset
+  259  rake db:migrate 
+  260  rake db:refresh
+  261  rake db:reset
+  262  rake db:delete
+  263  rake db:reset
+  264  rake db:migrate reset
+  265  rake db:migrate delete
+  266  rake db:migrate
+  267  rake db:reset
+  268  rake db:roolback
+  269  rake db:rollback
+  270  rake db:migrate
+  271  rake db:reset
+  272  rake db:rollback
+  273  rake db:migrate
+  274  rake db:rollback
+  275  rake db:migrate
+  276  rake db:reset
+  277  rails server
+  278  cd Bureau/blog/
+  279  rails g devise user
+  280  bundle install
+  281  rails g devise user
+  282  rake db:migrate
+  283  ls
+  284  cd Bureau/blog/
+  285  ls
+  286  rails server
+  287  rake db:migrate
+  288  rake db:reset
+  289  rails server
+  290  rake db:migrate
+  291  rake db:migrate rollback
+  292  rake db:reset
+  293  rake db:migrate
+  294  rake db:migrate rollback
+  295  rake db:migrate reset
+  296  rake db:migrate
+  297  rails server
+  298  rake db:migrate
+  299  rails server
+  300  cd ..
+  301  rails new devise
+  302  cd devise/
+  303  ls
+  304  sublime .
+  305  ./sublime .
+  306  bundle install
+  307  rails generate devise:install
+  308  rails g devise:views
+  309  rails generate devise user
+  310  rake db:migrate
+  311  rails server
+  312  cd ..
+  313  cd blog/
+  314  ls
+  315  rails g devise:install
+  316  rails g devise:views
+  317  rails server
+  318  rake db:reset
+  319  rails s
+  320  sudo apt-get install libmagickwand-dev
+  321  sudo apt-get install imagemagick
+  322  rails db
+  323  rails c
+  324  rails db
+  325  cd blog
+  326  cd Bureau/blog/
+  327  ls
+  328  rails server
+  329  cd ..
+  330  ks
+  331  ls
+  332  cd devise/
+  333  rails
+  334  rails s
+  335  cd  ..
+  336  cd blog/
+  337  rails server
+  338  rake db:reset
+  339  rails server
+  340  rake db:reset
+  341  rails server
+  342  rake db:reset
+  343  rails server
+  344  rake db:reset
+  345  rails server
+  346  rake db:reset
+  347  rails server
+  348  rails g devise:users
+  349  rails g devise:install
+  350  bundle install
+  351  rails g devise:install
+  352  rails g devise:views
+  353  rails server
+  354  rails db:migrate
+  355  rake db:migrate
+  356  rails server
+  357  rails generate devise user
+  358  rake db:migrate
+  359  rails s
+  360  bundle install
+  361  rake db:migrate
+  362  rails generate uploader Photo
+  363  rails server
+  364  rake db:resest
+  365  rake db:reset
+  366  rails server
+  367  cd ..
+  368  ls
+  369  cd rails/
+  370  rails server
+  371  cd ..
+  372  cd blog/
+  373  rails s
+  374  rails db:reset
+  375  rake db:reset
+  376  rails server
+  377  rake db:reset
+  378  rails db
+  379  rake db:reset
+  380  rails server
+  381  cd Bureau/blog/
+  382  ls
+  383  chmod public 777
+  384  chmod 777 public/
+  385  cd blog 
+  386  cd Bureau/blog 
+  387  rails s
+  388  rake db:reset
+  389  rake db:migrate
+  390  rails s
+  391  rake db:reset
+  392  rails s
+  393  history
+  394  history > carrier
+
+
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name,:last_name,:avatar, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :first_name,:last_name,:avatar, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name,:last_name,:avatar, :email, :password, :password_confirmation, :current_password) }
+  end
+
+end
+
+
+  before_filter :authenticate_user! ,:except => [:index, :show]
+
+
+lsof -wni tcp:3000
+kill -9 pid

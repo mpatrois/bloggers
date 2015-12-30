@@ -1,0 +1,54 @@
+%div.header
+  %h1
+    Liste des articles
+
+%div.container
+  %div.row
+    %div.col.s7
+      %ul#pagination-article.pagination
+        - (1..@numberPage).each do |i|
+          - if @page+1==i
+            %li.waves-effect.getPostsPage.active{:data => {'page' => i}}
+              %a
+                = i
+          - else
+            %li.waves-effect.getPostsPage{:data => {'page' => i}}
+              %a{:href => "/posts/?page=#{@page}&limit=#{@limit}"}
+                = i
+    %div.col.s5
+      %div.input-field
+        %select#article-par-page
+          %option{:value => "#{@limit}", :selected => true}
+            = @limit
+            - (1..@numberPosts).each do |i|
+              %option{:value => "#{i}"}
+                = i
+        %label
+          Nombre de maximum d'articles par page
+
+  %div#list-posts-container
+    %div#list-posts.row
+      - @posts.each do |post|
+        %div.col.s6.post-card
+          .card.medium.custom
+            = link_to post do
+              .card-image
+                =  image_tag post.file_name.thumb.url
+                %span.card-title
+                  = post.title
+            .card-content
+              %p
+                = post.header
+            .card-action
+              %div.row
+                %div.col.m2
+                  = image_tag post.user.avatar.thumb
+                %div.col.m5
+                  = link_to post.user do
+                    = post.user.first_name
+                    = post.user.last_name
+                  %span.date
+                    le
+                    = post.created_at.to_date 
+                %div.col.m5.link-card
+                  = link_to "voir l'article",post

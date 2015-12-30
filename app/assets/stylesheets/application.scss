@@ -1,0 +1,419 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *
+ */
+/*@import "bootstrap-sprockets";
+@import 'bootstrap';*/
+//= require material_icons
+
+/*@import "materialize/components/color";*/
+/*$primary-color: #16ABB6;*/
+$primary-color:#0276BC;
+$secondary-color:#14A6B6;
+
+@import "materialize";
+
+
+
+$brand-color:#0277BC;
+
+
+$violet:#5454A1;
+
+.btn-danger{
+	background-color: #EA2727;
+}
+.btn-danger:hover{
+	background-color: #EA2727;
+}
+
+.post-edit-button.preview{
+	form{
+		display: inline-block;
+	}
+}
+
+h2,h3{
+	color: $secondary-color;
+}
+.hidden{
+    visibility: hidden;
+}
+.card {
+	.card-image {
+		.card-title{
+			color: #fff;
+		    position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    padding: 0px 20px;
+		    background: rgba(0, 0, 0, 0.54);
+		    width: 100%;
+		}
+	}
+	.card-action{
+		a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+			color: $primary-color;
+		}
+	}
+}
+.card.custom{
+		height: auto;
+		.card-image{
+			height: 250px;
+		}
+
+		.card-content{
+			display: -webkit-box;
+			height: 108px;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: left;
+		}
+
+		.card-action{
+			position:relative;
+			.row{
+				margin-bottom: 0px;
+			}
+			img{
+				width: 100%;
+			}
+			span.date{
+				display: block;
+			}
+		}
+		.link-card{
+			margin-top: 20px;
+			text-align: right;
+			a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+				margin: 0px;
+			}
+		}
+}
+
+.pagination li.active{
+	color:white;
+}
+
+textarea{
+	height: inherit;
+}
+
+.header {
+    /*background-color: #00acbd;
+    background-image: linear-gradient(10deg, #1cbbb4 0%, #0072bc 100%);*/
+    background-color: #037ABB;
+	background-image: linear-gradient(10deg, #0887B9 0%, #0072BC 100%);
+    text-align: center;
+    color: white;
+    padding: 80px 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}	
+
+a:hover{
+	text-decoration: none;
+}
+
+#img-logo{
+	width: 50px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.post{
+	
+	figure{
+		text-align: center;
+	}
+	div.view{
+		background: #f6f6f6;
+		border: 1px solid #ececec;
+		border-radius: 0 0 4px 4px;
+		border-top: 0;
+		color: #333;
+		font-size: 12px;
+		padding: 8px;
+		line-height: 1.5em;
+		min-height: 50px;
+		text-align: center;
+		-webkit-transition: all .2s ease-in-out;
+		-o-transition: all .2s ease-in-out;
+		transition: all .2s ease-in-out;
+		font-size: 15px; 
+     	padding: 20px 25px; 
+	}
+}
+
+#header-site{
+	/*background-color: rgb(234, 67, 53);*/
+    /*background-color: #31708f;*/
+    background-color: #fff;
+    box-shadow: 0px 1px 10px;
+	border: none;
+	margin-bottom: 0px;
+		
+		.navbar-nav > li > a{
+			color: $brand-color;
+		    padding: 19px 12px 22px 12px;
+			text-decoration: none;
+			font-size: 17px;
+			font-weight: 700;
+			transition: border-bottom-color 0.1s ease-out;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			text-transform: uppercase;
+		}
+		.navbar-brand{
+			color:$brand-color;
+    		margin-bottom: 18px;
+		}
+		button.leave{
+			background: transparent;
+			color: white;
+			font-size: 17px;
+		    padding: 10px;
+		    font-weight: 700;
+		    text-transform: uppercase;
+		    border: 0px;
+		}
+		.navbar-nav > li.active > a {
+		    background: transparent;
+		}
+		.navbar-nav > li.active:after,.navbar-nav > li:hover:after {
+		    content: " ";
+		    width: 100%;
+		    display: block;
+		    height: 2px;
+		    background: $brand-color;
+		    margin-bottom: 6px;
+			position: absolute;
+			bottom: 2px;
+		}
+		.navbar-nav > li:hover:after {
+		    background: rgba(2, 119, 188, 0.54);;
+		}
+}
+
+.post-preview{
+	background: whitesmoke;
+    padding: 0px;
+    transition: transform 600ms;
+
+	img{
+		width: 100%;
+	}
+	
+	.by{
+		text-align: left;
+		font-weight: 800;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		
+		.by-photo,.by-info{
+			display: inline-block;
+    		vertical-align: middle;
+    		a{
+    			display: block;
+    		}
+		}
+
+		
+		.img-user{
+			display: inline-block;
+			width:60px;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
+}
+.post-preview:hover{
+	transform:scale(1.02);
+}
+.post-litle-preview{
+	h3{
+		font-size: 20px;
+	}
+	img{
+		width: 100%;
+	}
+}
+
+.post{
+	
+	h1{
+    	font-weight: 800;
+    	font-size: 50px;
+	}
+	h2{
+		padding: 14px 12px;
+    	font-size: 25px;
+	}
+	h3{
+		margin-top: 0px;
+		text-align: right;
+	}
+	.img{
+		text-align: center;
+		img{
+			width: 100%;
+		}
+	}
+	p{
+		font-size: 17px;
+	}
+	.header-post,.content-post{
+		padding: 30px;
+		.post-edit-button{
+			text-align: left;
+			form{
+				display: inline-block;
+			}
+
+		}
+	}
+}
+
+div.form-edit{
+	form.edit_user{
+		max-width: 700px;
+	}
+
+}
+.sign-form-container{
+	margin-top: 20px;
+	text-align: center;
+	h1{
+		font-size: 47px;
+    	color: $primary-color;
+	}
+	.sign-form{
+	    display: inline-block;
+	    padding-bottom: 20px;
+	    text-align: left;
+
+		.input{
+		    #user_avatar{
+		    	display: none;
+		    }
+		}
+		.field_with_errors  label{
+	    	    color: #FF001D;
+	    	    font-size: 0.8rem;
+				transform: translateY(-140%);
+		}
+
+		.field_with_errors {
+	    	   .choose-btn{
+	    	   		transform:none;
+	    	   }
+		}
+
+		.errors{
+			color: red;
+		}
+
+		.actions{
+			margin-top: 30px;
+			
+			button,a{
+				width: 100%;
+			}
+			.not-user{
+				margin-top: 30px;
+				a{
+					display: block;
+					background: $violet;
+				}
+			}
+		}
+		.file_field{
+			display: none;
+		}
+		#img-avatar{
+		    width: 180px;
+		    height: auto;
+			border-radius: 50%;
+			display: none;
+		}
+		.choose-btn{
+		    background: blue;
+		    position: relative;
+		    cursor: pointer;
+		}
+	}
+}
+.user-preview{
+	border:1px;
+	.img-user{
+		border-radius: 50%;
+		width: 100%;
+	}
+}
+.user-preview:hover,.user-preview:hover *{
+	cursor: pointer;
+}
+
+.user-show{
+	img{
+		width: 300px;
+		max-width: 100%;
+	}
+	h1{
+		color: white;
+	}
+}
+.error{
+	color: red;
+}
+
+.form-post-container{
+	text-align: center;
+	.form-post{
+		width: 600px;
+		max-width: 100%;
+		display: inline-block;
+		text-align:left;
+	    min-height: 900px;
+
+	    .send{
+	    	text-align: right;
+	    }
+
+	    input[type="submit"]{
+	    	background-color: #55B155;
+	    	margin-top: 40px;
+	    }
+	}
+	.choose-photo{
+		text-align: left;
+		margin: 30px 0px;
+	}
+}
+
+.field_with_errors{
+	label{
+    color: #FF001D;
+    font-size: 0.8rem;
+    transform: translateY(-140%);
+    }
+}
+
+.list-users{
+	text-align: center;
+}

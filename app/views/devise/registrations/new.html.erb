@@ -1,0 +1,57 @@
+<div class="sign-form-container">
+  <div class="sign-form">
+    <h1>Inscription</h1>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="errors"><%= resource.errors[:email][0] %> </div>
+      <div class="input-field">
+        <%= f.email_field :email, autofocus: true %>
+        <%= f.label :email %>
+      </div>
+
+      <div class="errors"><%= resource.errors[:first_name][0] %> </div>
+      <div class="input-field">
+        <%= f.text_field :first_name%>
+        <%= f.label :first_name%>
+        <!-- <label>Nom <%= resource.errors[:first_name][0] %></label> -->
+      </div>
+
+      <div class="errors"><%= resource.errors[:last_name][0] %> </div>
+      <div class="input-field">
+        <%= f.text_field :last_name%>
+        <%= f.label :last_name%>
+      </div>
+
+      <div class="errors"><%= resource.errors[:password][0] %> </div>
+      <div class="input-field">
+        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.label :password, autocomplete: "off" %>
+        <!-- <label>Mot de passe (<%= @minimum_password_length %> minimum)</label> -->
+      </div>
+
+      <div class="errors"><%= resource.errors[:password_confirmation][0] %> </div>
+      <div class="input-field">
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label :password_confirmation, autocomplete: "off" %>
+        <!-- <label>Confirmation <%= resource.errors[:password_confirmation][0] %> </label> -->
+      </div>
+
+       <img src="" id="img-avatar">
+
+       <div class="errors"><%= resource.errors[:avatar][0] %> </div>
+       <div class="input-field file-field">
+        <div class="btn">
+          <span>Avatar</span>
+        </div>
+        <%= f.file_field :avatar %>
+        <div class="file-path-wrapper">
+          <input class="file-path validate">
+        </div>
+      </div>
+     
+
+    <div class="actions">
+      <button class="waves-effect waves-light btn" type="submit">Inscription</button>
+    </div>
+  <% end %>
+</div>

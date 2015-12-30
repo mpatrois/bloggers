@@ -1,0 +1,43 @@
+%div.header
+	%h1
+		Modifier
+		= @post.title
+
+%div.container
+	%div.form-post-container
+		= form_for @post ,html: {class: "form-post", multipart: true} do |p|
+			%div.error
+				= @post.errors[:title][0]
+			%div.input-field
+				= p.text_field :title
+				= p.label :title
+			
+			%div.error
+				= @post.errors[:header][0]
+			%div.input-field
+				= p.text_field :header
+				= p.label :header
+
+			%div.error
+				= @post.errors[:content][0]
+			%div.input-field
+				= p.text_area :content,:class => "materialize-textarea"
+				= p.label :content
+			
+			= image_tag @post.file_name.thumb.url
+
+			%div.file-field.input-field
+				%div.error
+					= @post.errors[:file_name][0]
+				%div.btn
+					%span
+						Photo
+					= p.file_field :file_name,multiple: false
+				%div.file-path-wrapper
+					%input.file-path.validate
+
+				%div
+					%img#img-article.hide
+
+			%div.input-group.send
+				= p.submit :class=> "btn"
