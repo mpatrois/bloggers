@@ -35,11 +35,11 @@ class PostsController < ApplicationController
     
     @offset=@limit*@page
     respond_to do |format|
-     format.html{ @posts = Post.limit(@limit).offset(@offset) }
+      format.html{ @posts = Post.limit(@limit).offset(@offset) }
      
-     format.json{ 
-      render json: Post.limit(@limit).offset(@offset).to_json(:include => :user)
-    }
+      format.json{ 
+        render json: Post.limit(@limit).offset(@offset).to_json(:include => :user)
+      }
     end
   end
 
@@ -97,9 +97,11 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json {render json: 'test', status: :ok }
-      format.js {render json: 'test', status: :ok}
+      format.html { redirect_to @post.user, notice: 'Post was successfully destroyed.' }
+      format.json {
+        render json: @post.id 
+      }
+      format.js {render json: @post, status: :ok}
     end
   end
 

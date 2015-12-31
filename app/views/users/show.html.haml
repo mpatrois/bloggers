@@ -3,14 +3,17 @@
 		%div.container.user-show
 			%div
 				= image_tag @user.avatar.url, :class => "user-avatar"
-			%h1
-				= @user.first_name
-				= @user.last_name
+				%span
+					= @user.first_name
+					= @user.last_name
+					%h2
+						%span#nbArticlesUser
+							= @user.posts.count
+						articles
 
-%div.container
+%div.container.users-post
 	%div.row
 		- @user.posts.all.each do |post|
-
 			- if (current_user!=post.user)
 				%div.col.s6
 					.card.medium
@@ -23,15 +26,19 @@
 								= post.header
 						.card-action
 							= link_to "voir l'article", post
+				}
 			- else
-				%div.col.s6
+				%div.col.s6{ "id" => "post-"+post.id.to_s }
 					.card.medium
 						.card-image
 							= image_tag post.file_name.thumb.url
 						.card-content
 							%span.card-title.activator.grey-text.text-darken-4
-								= post.title
 								%i.material-icons.right more_vert
+							%h4
+								= post.title
+							= link_to post do
+								voir l'article
 							%p
 								= post.header
 						.card-reveal
@@ -43,4 +50,17 @@
 									=link_to "éditer", (edit_post_path([post])),:class => "btn btn-primary"
 
 									= form_tag(post_path([post]), method: "delete") do
-										= button_tag 'supprimer' , class: 'btn btn-danger delete-photo',type: :submit,data: { id: post.id, name:post.title }
+										= button_tag 'supprimer' , class: 'btn btn-danger delete-post',type: :submit,data: { id: post.id, name:post.title,url: post_path([post]) }
+
+	
+#modal-delete.modal
+	.modal-content
+		%h4 Supprimer l'article
+		%p
+			Voulez vous supprimer 
+			%strong
+				%span#name-article-delete
+			?
+	.modal-footer
+		%a#delete-post-button.modal-action.modal-close.waves-effect.waves-green.btn-flat{:href => "#!"} Ok
+		%a.modal-action.modal-close.waves-effect.waves-red.btn-flat{:href => "#!"} Annuler
