@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :comments,:except => [:index, :edit, :new, :show ]
   devise_for :users
   root to: "application#index"
   

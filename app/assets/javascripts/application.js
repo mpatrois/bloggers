@@ -213,10 +213,22 @@ $('#article-par-page').change(function(){
 	
 })
 
+$('.delete-post-show').click(function(event){
+	event.preventDefault();
+	// console.log($(this).attr('data-name'));
+	$('#name-article-delete').html($(this).attr('data-name'));
+	$('#delete-post-button').off( "click" );
+	$('#modal-delete').openModal();
+
+	$('#delete-post-button').click(function(event){
+		$('#form-post').submit();
+	});
+});
+
 $('button.delete-post').click(function(event){
 	event.preventDefault();
 	$('#modal-delete').openModal();
-	console.log(this);
+	// console.log(this);
 	var url=$(this).attr("data-url");
 	console.log($(this).attr('data-name'));
 	$('#name-article-delete').html($(this).attr('data-name'));

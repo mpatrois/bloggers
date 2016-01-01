@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index
-    @posts = Post.all
+    @lastPosts = Post.all.limit(4)
+    @postsMostCommented = Post.joins("LEFT JOIN `comments` ON comments.post_id = posts.id").group("comments.post_id").order(" count(comments.id) desc").limit(4)
   end
   
   protected

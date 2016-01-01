@@ -30,10 +30,11 @@ $brand-color:#0277BC;
 
 $violet:#5454A1;
 
-.btn-danger{
-	background-color: #EA2727;
+body {
+	background-color: #F4F4F4;
 }
-.btn-danger:hover{
+
+.btn-danger,.btn-danger:hover,.btn-danger:focus{
 	background-color: #EA2727;
 }
 
@@ -53,7 +54,7 @@ $violet:#5454A1;
 }
 
 h2,h3{
-	color: $secondary-color;
+	color: $primary-color;
 }
 .hidden{
     visibility: hidden;
@@ -111,6 +112,11 @@ h2,h3{
 				margin: 0px;
 			}
 		}
+}
+.card.small{
+	.circle{
+		max-width: 100%;
+	}
 }
 
 .pagination li.active{
@@ -264,10 +270,15 @@ a:hover{
 }
 
 .post{
+	background-color: #fff;
+    border: 1px solid #dedede;
+    margin-top: 40px;
+    border-top: 5px solid $primary-color;
 	
 	h1{
     	font-weight: 800;
     	font-size: 50px;
+    	text-align: center;
 	}
 	h2{
 		padding: 14px 12px;
@@ -296,6 +307,23 @@ a:hover{
 
 		}
 	}
+
+
+	.create_comment,.comment{
+		img{
+			width: 100%;
+			max-width: 200px;
+		}
+		p{
+			/*border-bottom: 2px solid $primary-color;*/
+		}
+	}
+
+	.comment .m10{
+		/*border-top: 2px solid $primary-color;*/
+	}
+
+
 }
 
 div.form-edit{
@@ -443,3 +471,4 @@ div.form-edit{
 .users-post{
 	min-height: 800px;
 }
+

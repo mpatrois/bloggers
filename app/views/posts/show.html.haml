@@ -1,11 +1,13 @@
-%div.header
-	%div.post
-		%div.header-post
-			%h1
-				= @post.title
+/ %div.header
+/ 	%div.post
+/ 		%div.header-post
+/ 			%h1
+/ 				= @post.title
 
 %div.container
 	%div.post
+		%h1
+			= @post.title
 		%div.header-post
 			%p
 				Posté le 
@@ -20,19 +22,57 @@
 					-if(current_user==@post.user)
 						=link_to "éditer", (edit_post_path([@post])),:class => "btn btn-primary"
 
-						= form_tag(post_path([@post]), method: "delete") do
-							= button_tag 'supprimer' , class: 'btn btn-danger delete-photo',type: :submit,data: { id: @post.id, name:@post.title }
+						= form_tag(post_path([@post]), method: "delete",id:"form-post") do
+							= button_tag 'supprimer' , class: 'btn btn-danger delete-post-show',type: :submit,data: { id: @post.id, name:@post.title }
 
 		
 			%div.row
-				%div.col.s8
+				%div.col.m7
 					%div.img
 						=  image_tag @post.file_name.url
 					%h2
 						= @post.header
 					%p 
 						= @post.content
-				%div.col.s3.offset-s1
+					%div
+						-if user_signed_in?
+							%div.row.create_comment
+								%h4
+									Laisser un commentaire
+								%div.col.m2
+									= image_tag current_user.avatar.thumb.url,:class => "circle"
+									%div
+										= current_user.first_name
+										= current_user.last_name
+								%div.col.m10
+									= form_for Comment.new do |c|
+										= c.hidden_field :post_id,:value => @post.id
+										%div.input-field
+											= c.text_area :content,:class => "materialize-textarea"
+											= c.label :content
+										%div
+											= c.submit :class=> "btn"
+							%div.row.comment
+								%h4
+									Les commentaires
+								- @post.comments.all.each do |c|
+									%div.row.comment
+										%div.col.m2
+											= link_to c.user do
+												= image_tag c.user.avatar.thumb.url,:class => "circle"
+										%div.col.m10
+											= link_to c.user do
+												%div
+												= current_user.first_name
+												= current_user.last_name
+											le
+											= c.created_at
+											%div
+												= c.content
+
+
+
+				%div.col.m3.offset-m1
 					%h4 
 						Du même auteur
 					%div.row
@@ -47,3 +87,16 @@
 										= post.header
 								.card-action
 									= link_to "voir l'article",post
+#modal-delete.modal
+	.modal-content
+		%h4 Supprimer l'article
+		%p
+			Voulez vous supprimer 
+			%strong
+				%span#name-article-delete
+			?
+		%p
+			Vous serez ensuite redirigés vers votre page.
+	.modal-footer
+		%a#delete-post-button.modal-action.modal-close.waves-effect.waves-green.btn-flat{:href => "#!"} Ok
+		%a.modal-action.modal-close.waves-effect.waves-red.btn-flat{:href => "#!"} Annuler

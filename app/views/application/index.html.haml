@@ -8,7 +8,7 @@
 	%h2
 		Derniers article
 	%div.row
-		- Post.all.order("created_at desc").limit(4).each do |post|
+		- @lastPosts.each do |post|
 			%div.col.s6
 				.card.medium
 					.card-image
@@ -21,4 +21,17 @@
 					.card-action
 						= link_to "voir l'article",post
 	%h2
-		Article le plus commenté
+		Articles les plus commentés
+	%div.row
+		- @postsMostCommented.each do |post|
+			%div.col.s6
+				.card.medium
+					.card-image
+						=  image_tag post.file_name.thumb.url
+						%span.card-title
+							= post.title
+					.card-content
+						%p
+							= post.header
+					.card-action
+						= link_to "voir l'article",post
