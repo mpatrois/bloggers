@@ -52,23 +52,23 @@
 											= c.label :content
 										%div
 											= c.submit :class=> "btn"
-							%div.row.comment
-								%h4
-									Les commentaires
-								- @post.comments.all.each do |c|
-									%div.row.comment
-										%div.col.m2
-											= link_to c.user do
-												= image_tag c.user.avatar.thumb.url,:class => "circle"
-										%div.col.m10
-											= link_to c.user do
-												%div
-												= current_user.first_name
-												= current_user.last_name
-											le
-											= c.created_at
+						%div.row.comment
+							%h4
+								Les commentaires
+							- @post.comments.all.each do |c|
+								%div.row.comment
+									%div.col.m2
+										= link_to c.user do
+											= image_tag c.user.avatar.thumb.url,:class => "circle"
+									%div.col.m10
+										= link_to c.user do
 											%div
-												= c.content
+											= current_user.first_name
+											= current_user.last_name
+										le
+										= c.created_at
+										%div
+											= c.content
 
 
 
