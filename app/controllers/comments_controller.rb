@@ -28,12 +28,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id=current_user.id
 
+    @post=Post.find(@comment.post_id);
+
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path([@comment.post_id]) }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to post_path([@post]) }
+        format.json { render json: @comment.to_json(:include => :user) }
       else
-        format.html { render :new }
+        format.html { render "posts/show" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

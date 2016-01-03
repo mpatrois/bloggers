@@ -35,6 +35,23 @@
 					%p 
 						= @post.content
 					%div
+						%div#list-comments.row.comment
+							%h4
+								Les commentaires
+							- @post.comments.all.each do |c|
+								%div.row.comment
+									%div.col.m2
+										= link_to c.user do
+											= image_tag c.user.avatar.thumb.url,:class => "circle"
+									%div.col.m10
+										= link_to c.user do
+											= current_user.first_name
+											= current_user.last_name
+										le
+										= c.created_at
+										/ %i.material-icons.right more_vert
+										%div
+											= c.content
 						-if user_signed_in?
 							%div.row.create_comment
 								%h4
@@ -47,28 +64,14 @@
 								%div.col.m10
 									= form_for Comment.new do |c|
 										= c.hidden_field :post_id,:value => @post.id
+										%div#error-content.errors
+											- if @comment
+												= @comment.errors[:content][0];
 										%div.input-field
 											= c.text_area :content,:class => "materialize-textarea"
 											= c.label :content
 										%div
-											= c.submit :class=> "btn"
-						%div.row.comment
-							%h4
-								Les commentaires
-							- @post.comments.all.each do |c|
-								%div.row.comment
-									%div.col.m2
-										= link_to c.user do
-											= image_tag c.user.avatar.thumb.url,:class => "circle"
-									%div.col.m10
-										= link_to c.user do
-											%div
-											= current_user.first_name
-											= current_user.last_name
-										le
-										= c.created_at
-										%div
-											= c.content
+											= c.submit :class=> "btn", :id => "leave-comment"
 
 
 

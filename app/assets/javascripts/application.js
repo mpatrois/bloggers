@@ -235,7 +235,7 @@ $('button.delete-post').click(function(event){
 	$('#delete-post-button').off( "click" );
 	
 	$('#delete-post-button').click(function(event){
-		console.log(url);
+		// console.log(url);
 		// urlDelete=this.href;
 
 		$('#modal-delete').closeModal();
@@ -255,4 +255,46 @@ $('button.delete-post').click(function(event){
 	  	});
 
 	})
+});
+
+$('#leave-comment').click(function(event){
+	event.preventDefault();
+
+	var url=$('#new_comment').attr('action');
+
+	$.ajax({
+				url: url+".json",
+		        type: "post",
+		        data:{
+		        	id:4,
+		        	"comment[post_id]":comment_post_id.value,
+		        	"comment[content]":comment_content.value,
+		        	authenticity_token:$('meta[name="csrf-token"]').attr('content')
+		        }
+			}).done(function(data){
+	  			console.log("done");
+	  			// console.log(data);
+	  			var newComment='<div class="row comment">'+
+                  					'<div class="col m2">'+
+                     					' <a href="/users/'+data.user.id+'"><img class="circle" src="'+data.user.avatar.thumb.url+'" ></a>'+
+				                  	'</div>'+
+				                   ' <div class="col m10">'+
+				                    '  <a href="/users/'+data.user.id+'">'+
+				                      data.user.first_name+" "+data.user.last_name+
+				                    '  </a> le'+data.created_at+
+				                    '  <div>'+
+				                        data.content+
+				                     ' </div>'+
+				                   ' </div>'+
+				                 ' </div>';
+				                 $('#list-comments').append(newComment);
+
+	  		}).error(function(data)
+	  		{
+	  			var errors=data.responseJSON;
+	  			for(var index in errors){
+	  				$('#error-'+index).html(errors[index]);
+	  			}	
+	  		});
+
 });
