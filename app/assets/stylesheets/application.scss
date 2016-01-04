@@ -475,3 +475,12 @@ div.form-edit{
 .errors{
 	color: red;
 }
+
+.form-delete-comment{
+	display: inline-block;
+	button{
+		border: 0px;
+		outline: none;
+		background-color: transparent;
+	}
+}

@@ -39,29 +39,40 @@
 							%h4
 								Les commentaires
 							- @post.comments.all.each do |c|
-								%div.row.comment
+								%div.row.comment{:id => "comment-#{c.id}" }
 									%div.col.m2
 										= link_to c.user do
 											= image_tag c.user.avatar.thumb.url,:class => "circle"
 									%div.col.m10
 										= link_to c.user do
-											= current_user.first_name
-											= current_user.last_name
+											= c.user.first_name
+											= c.user.last_name
 										le
-										= c.created_at
+										= c.user.created_at
 										/ %i.material-icons.right more_vert
 										%div
 											= c.content
+										-if c.user==current_user
+											%a.edit-comment
+												%i.material-icons
+													mode_edit
+											%a
+												= form_tag(comment_path([c]), method: "delete", :class => 'form-delete-comment') do
+													= button_tag 'supprimer' , class: 'delete-comment',type: :submit,data: { id: c.id, content:c.content } do
+														%i.material-icons
+															delete
+
 						-if user_signed_in?
 							%div.row.create_comment
 								%h4
 									Laisser un commentaire
 								%div.col.m2
 									= image_tag current_user.avatar.thumb.url,:class => "circle"
+									
+								%div.col.m10
 									%div
 										= current_user.first_name
 										= current_user.last_name
-								%div.col.m10
 									= form_for Comment.new do |c|
 										= c.hidden_field :post_id,:value => @post.id
 										%div#error-content.errors
@@ -72,6 +83,7 @@
 											= c.label :content
 										%div
 											= c.submit :class=> "btn", :id => "leave-comment"
+						/ .fixed-action-btn.horizontal.click-to-toggle{:style => "bottom: 45px; right: 24px;"}
 
 
 
@@ -92,14 +104,13 @@
 									= link_to "voir l'article",post
 #modal-delete.modal
 	.modal-content
-		%h4 Supprimer l'article
+		%h4 Supprimer
 		%p
 			Voulez vous supprimer 
 			%strong
-				%span#name-article-delete
+				%span#item-to-delete
 			?
-		%p
-			Vous serez ensuite redirigés vers votre page.
+			
 	.modal-footer
 		%a#delete-post-button.modal-action.modal-close.waves-effect.waves-green.btn-flat{:href => "#!"} Ok
 		%a.modal-action.modal-close.waves-effect.waves-red.btn-flat{:href => "#!"} Annuler

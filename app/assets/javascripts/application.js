@@ -216,12 +216,40 @@ $('#article-par-page').change(function(){
 $('.delete-post-show').click(function(event){
 	event.preventDefault();
 	// console.log($(this).attr('data-name'));
-	$('#name-article-delete').html($(this).attr('data-name'));
+	$('#item-to-delete').html($(this).attr('data-name'));
 	$('#delete-post-button').off( "click" );
 	$('#modal-delete').openModal();
 
 	$('#delete-post-button').click(function(event){
 		$('#form-post').submit();
+	});
+});
+
+$('.delete-comment').click(function(event){
+	event.preventDefault();
+	// console.log($(this).attr('data-name'));
+	$('#item-to-delete').html($(this).attr('data-content'));
+	$('#delete-post-button').off( "click" );
+	$('#modal-delete').openModal();
+
+	var url=$(this).parent().attr('action');
+	console.log(url);
+	
+	$('#delete-post-button').click(function(event){
+		$.ajax({
+	        url: url+".json",
+	        type: "delete",
+	        data:{
+	        	authenticity_token:$('meta[name="csrf-token"]').attr('content')
+	        }
+	  	})
+	  	.complete(function(data){
+	  		console.log(data);
+	  		// $().fadeOut()
+	  		$("#comment-"+data.responseJSON).fadeOut('300',function(){
+	  					$(this).remove();
+	  			});
+	  	});
 	});
 });
 

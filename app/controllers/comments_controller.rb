@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
   before_filter :authenticate_user!
+  before_filter :require_permission ,:only => [ :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -60,8 +61,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to @comment.post, notice: 'Comment was successfully destroyed.' }
+      format.json { render json: @comment.id }
     end
   end
 
@@ -75,4 +76,12 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:content,:post_id)
     end
+
+    def require_permission
+      comment=Comment.find(params[:id])
+      if current_user != comment.user
+        redirect_to comment.post
+      end
+    end
+
 end
