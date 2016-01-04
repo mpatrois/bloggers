@@ -225,7 +225,52 @@ $('.delete-post-show').click(function(event){
 	});
 });
 
-$('.delete-comment').click(function(event){
+
+
+
+function initComments(){
+	$('.comment-content').css('display','none');
+
+	$('.edit-comment').click(function(event){
+
+		event.preventDefault();
+		
+
+		var input=$('#comment-content-'+$(this).attr('data-id'));
+		var url=input.parent().attr('action');
+		// console.log(url);
+		if(input.css('display')=="none"){
+			input.css('display','inline-block');
+			input.keypress(function(e) {
+			    
+			    if(e.which == 13) {
+			        $.ajax({
+				        url: url+".json",
+				        type: "put",
+				        data:{
+				        	authenticity_token:$('meta[name="csrf-token"]').attr('content'),
+				        	"comment[content]":input.val()
+				        }
+				  	})
+				  	.done(function(data){
+				  		// console.log(data);
+				  		// $("#comment-"+data.responseJSON).fadeOut('300',function(){
+				  		// 			$(this).remove();
+				  		// 	});
+				  		$('#text-comment-'+data.id).html(data.content);
+				  		$('#date-comment-'+data.id).html(data.updated_at);
+				  		input.css('display','none');
+				  	});
+				}
+
+			});
+		}
+		else if(input.css('display')=="inline-block"){
+			input.css('display','none');
+		}
+	});
+	
+	$('.delete-comment').click(function(event){
 	event.preventDefault();
 	// console.log($(this).attr('data-name'));
 	$('#item-to-delete').html($(this).attr('data-content'));
@@ -233,7 +278,7 @@ $('.delete-comment').click(function(event){
 	$('#modal-delete').openModal();
 
 	var url=$(this).parent().attr('action');
-	console.log(url);
+	// console.log(url);
 	
 	$('#delete-post-button').click(function(event){
 		$.ajax({
@@ -244,14 +289,18 @@ $('.delete-comment').click(function(event){
 	        }
 	  	})
 	  	.complete(function(data){
-	  		console.log(data);
-	  		// $().fadeOut()
+	  		// console.log(data);
 	  		$("#comment-"+data.responseJSON).fadeOut('300',function(){
 	  					$(this).remove();
 	  			});
 	  	});
 	});
+
 });
+
+}
+initComments();
+
 
 $('button.delete-post').click(function(event){
 	event.preventDefault();
@@ -302,20 +351,35 @@ $('#leave-comment').click(function(event){
 			}).done(function(data){
 	  			console.log("done");
 	  			// console.log(data);
-	  			var newComment='<div class="row comment">'+
+
+	  			var formEdit='<a><form class="form-edit-comment" action="/comments/'+data.id+'" accept-charset="UTF-8" method="post">'+
+								'<input id="comment-content-'+data.id+'" class="comment-content" type="text" value="'+data.content+'" name="comment[content]" style="display: none;">'+
+							   ' <button name="button" type="submit" class="edit-comment" data-id="'+data.id+'" data-content="'+data.content+'">'+
+							    	'<i class="material-icons">mode_edit</i>'+
+							    '</button>'+
+							  '</form></a>';
+
+				var formDelete='<a><form class="form-edit-comment" action="/comments/'+data.id+'" accept-charset="UTF-8" method="post">'+
+                    '<button name="button" type="submit" class="delete-comment" data-id="'+data.id+'" data-content="'+data.content+'">'+
+                    	'<i class="material-icons">delete</i>'+
+                    '</button>'+
+                '</form></a>';
+
+	  			var newComment='<div class="row comment" id="comment-'+data.id+'">'+
                   					'<div class="col m2">'+
                      					' <a href="/users/'+data.user.id+'"><img class="circle" src="'+data.user.avatar.thumb.url+'" ></a>'+
 				                  	'</div>'+
-				                   ' <div class="col m10">'+
-				                    '  <a href="/users/'+data.user.id+'">'+
-				                      data.user.first_name+" "+data.user.last_name+
-				                    '  </a> le'+data.created_at+
-				                    '  <div>'+
-				                        data.content+
-				                     ' </div>'+
-				                   ' </div>'+
-				                 ' </div>';
+				                	'<div class="col m10">'+
+				                		'<a href="/users/'+data.user.id+'">'+
+				                     		data.user.first_name+" "+data.user.last_name+
+				                    	'</a> le <span id="date-comment-'+data.id+'" >'+data.created_at+"</span>"+
+				                    	'<div id="text-comment-'+data.id+'">'+data.content+' </div>'+
+				                    	formEdit+
+				                    	formDelete+
+				                '</div>';
 				                 $('#list-comments').append(newComment);
+
+				initComments();
 
 	  		}).error(function(data)
 	  		{

@@ -1,5 +1,3 @@
-User.delete_all
-
 
 nameArray=["Dupont","Shakur",'Wallace',"Carter","Parish","Jones","Holmes"];
 
@@ -8,8 +6,9 @@ prenomArray=["Jean","Marguerite",'Roberte',"Joseph","Emile","Genevieve","William
 photosArticle=["article1.jpg","article2.jpg","article3.jpg","article4.jpg","article5.jpeg"];
 
 
+User.delete_all
 
-for i in 0..6
+for i in 0..5
 
     nom=nameArray[rand(nameArray.length)];
     prenom=prenomArray[rand(prenomArray.length)];
@@ -27,6 +26,14 @@ for i in 0..6
     prenomArray.delete(prenom);
 
 end
+
+User.create([
+        first_name:'user',
+        last_name:'prenom',
+        email: 'user@user.fr',
+        password: "motdepasse",
+        avatar: open("public/default.png"),
+    ]);
 
 # User.create([
 #     first_name:"Wallace",
@@ -54,6 +61,18 @@ for j in 0..12
         user_id: user_id,
         file_name: open("public/"+photoArticle)
     ]);
+end
+
+for j in 0..60
+    user_id=1+rand(7);
+    post_id=1+rand(13)
+
+    Comment.create([
+        content:Forgery(:lorem_ipsum).words(30, :random=> true),
+        user_id: user_id,
+        post_id: post_id
+    ]);
+
 end
 
 # Post.create([

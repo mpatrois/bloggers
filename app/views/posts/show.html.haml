@@ -48,16 +48,21 @@
 											= c.user.first_name
 											= c.user.last_name
 										le
-										= c.user.created_at
+										%span{:id => "date-comment-#{c.id}"}
+											= c.user.updated_at
 										/ %i.material-icons.right more_vert
-										%div
+										%div{:id => "text-comment-#{c.id}" }
 											= c.content
+										
 										-if c.user==current_user
-											%a.edit-comment
-												%i.material-icons
-													mode_edit
 											%a
-												= form_tag(comment_path([c]), method: "delete", :class => 'form-delete-comment') do
+												=  form_for c ,html: {class: "form-edit-comment"} do |com|
+													= com.text_field :content,id:"comment-content-#{c.id}",class:"comment-content"
+													= button_tag 'edit' , class: 'edit-comment',type: :submit,data: { id: c.id, content:c.content } do
+														%i.material-icons
+															mode_edit
+											%a
+												= form_tag(comment_path([c]), method: "delete", :class => 'form-edit-comment') do
 													= button_tag 'supprimer' , class: 'delete-comment',type: :submit,data: { id: c.id, content:c.content } do
 														%i.material-icons
 															delete
