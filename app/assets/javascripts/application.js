@@ -48,7 +48,6 @@
 //         }
 //   	});
 // });
-
 $('[name="user[avatar]"]').change(function(){
 
 	var reader = new FileReader();
@@ -93,7 +92,7 @@ function initPagination(){
 	  		$('.post-card').remove();
 	  		for(var x in data){
 				// console.log(data[x]);
-				var card=	"<div class='col s6 post-card'>"+
+				var card="<div class='col s6 post-card'>"+
 								"<div class='card medium custom'>"+
 									"<a href='/posts/1'>"+
 								 		"<div class='card-image'>"+
@@ -272,8 +271,10 @@ function initComments(){
 	
 	$('.delete-comment').click(function(event){
 	event.preventDefault();
+	commentId=$(this).attr('data-id');
+	// console.log(commentId);
 	// console.log($(this).attr('data-name'));
-	$('#item-to-delete').html($(this).attr('data-content'));
+	$('#item-to-delete').html($('#text-comment-'+commentId).text());
 	$('#delete-post-button').off( "click" );
 	$('#modal-delete').openModal();
 
@@ -349,7 +350,7 @@ $('#leave-comment').click(function(event){
 		        	authenticity_token:$('meta[name="csrf-token"]').attr('content')
 		        }
 			}).done(function(data){
-	  			console.log("done");
+	  			// console.log("done");
 	  			// console.log(data);
 
 	  			var formEdit='<a><form class="form-edit-comment" action="/comments/'+data.id+'" accept-charset="UTF-8" method="post">'+

@@ -26,8 +26,6 @@ $secondary-color:#14A6B6;
 
 
 $brand-color:#0277BC;
-
-
 $violet:#5454A1;
 
 body {
@@ -173,10 +171,10 @@ a:hover{
 	}
 }
 
-#header-site{
+/*#header-site{*/
 	/*background-color: rgb(234, 67, 53);*/
     /*background-color: #31708f;*/
-    background-color: #fff;
+   /* background-color: #fff;
     box-shadow: 0px 1px 10px;
 	border: none;
 	margin-bottom: 0px;
@@ -223,7 +221,7 @@ a:hover{
 		.navbar-nav > li:hover:after {
 		    background: rgba(2, 119, 188, 0.54);;
 		}
-}
+}*/
 
 .post-preview{
 	background: whitesmoke;
@@ -257,7 +255,7 @@ a:hover{
 		}
 	}
 }
-.post-preview:hover{
+/*.post-preview:hover{
 	transform:scale(1.02);
 }
 .post-litle-preview{
@@ -267,7 +265,7 @@ a:hover{
 	img{
 		width: 100%;
 	}
-}
+}*/
 
 .post{
 	background-color: #fff;

@@ -31,11 +31,11 @@
 					.card.medium
 						.card-image
 							= image_tag post.file_name.thumb.url
+							%span.card-title
+								= post.title
 						.card-content
 							%span.card-title.activator.grey-text.text-darken-4
 								%i.material-icons.right more_vert
-							%h4
-								= post.title
 							= link_to post do
 								voir l'article
 							%p
