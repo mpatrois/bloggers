@@ -6,32 +6,64 @@
 
 %div.container
 	%h2
-		Derniers article
+		Derniers articles
 	%div.row
 		- @lastPosts.each do |post|
-			%div.col.s6
-				.card.medium
-					.card-image
-						=  image_tag post.file_name.thumb.url
-						%span.card-title
-							= post.title
+			%div.col.s6.post-card
+				%div.number-comment
+					%i.material-icons
+						comment
+					= post.comments.count
+				.card.medium.custom
+					= link_to post do
+						.card-image
+							=  image_tag post.file_name.thumb.url
+							%span.card-title
+								= post.title
 					.card-content
 						%p
 							= post.header
 					.card-action
-						= link_to "voir l'article",post
+						%div.row
+							%div.col.m2
+								= image_tag post.user.avatar.thumb
+							%div.col.m5
+								= link_to post.user do
+									= post.user.first_name
+									= post.user.last_name
+								%span.date
+									le
+									= post.created_at.to_date 
+							%div.col.m5.link-card
+								= link_to "voir l'article",post
 	%h2
 		Articles les plus commentés
 	%div.row
 		- @postsMostCommented.each do |post|
-			%div.col.s6
-				.card.medium
-					.card-image
-						=  image_tag post.file_name.thumb.url
-						%span.card-title
-							= post.title
+			%div.col.s6.post-card
+				%div.number-comment
+					%i.material-icons
+						comment
+					= post.comments.count
+				.card.medium.custom
+					= link_to post do
+						.card-image
+							=  image_tag post.file_name.thumb.url
+							%span.card-title
+								= post.title
 					.card-content
 						%p
 							= post.header
 					.card-action
-						= link_to "voir l'article",post
+						%div.row
+							%div.col.m2
+								= image_tag post.user.avatar.thumb
+							%div.col.m5
+								= link_to post.user do
+									= post.user.first_name
+									= post.user.last_name
+								%span.date
+									le
+									= post.created_at.to_date 
+							%div.col.m5.link-card
+								= link_to "voir l'article",post

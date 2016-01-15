@@ -13,7 +13,7 @@
                 = i
           - else
             %li.waves-effect.getPostsPage{:data => {'page' => i}}
-              %a{:href => "/posts/?page=#{@page}&limit=#{@limit}"}
+              %a{:href => "/posts/?page=#{i}&limit=#{@limit}"}
                 = i
     %div.col.s5
       %div.input-field
@@ -30,6 +30,10 @@
     %div#list-posts.row
       - @posts.each do |post|
         %div.col.s6.post-card
+          %div.number-comment
+            %i.material-icons
+              comment
+            = post.comments.count
           .card.medium.custom
             = link_to post do
               .card-image

@@ -266,6 +266,23 @@ a:hover{
 		width: 100%;
 	}
 }*/
+.post-card{
+	position:relative;
+	.number-comment{
+		position:absolute;
+		right:20px;
+		top:20px;
+		text-align:right;
+		z-index:20;
+		background:white;
+		padding:5px;
+	    border-radius: 4px;
+	    i{
+	    	vertical-align:top;
+	    }
+	}
+}
+
 
 .post{
 	background-color: #fff;
@@ -305,6 +322,7 @@ a:hover{
 
 		}
 	}
+
 
 
 	.create_comment,.comment{
