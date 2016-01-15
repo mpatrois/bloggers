@@ -38,7 +38,10 @@ class PostsController < ApplicationController
       format.html{ @posts = Post.limit(@limit).offset(@offset) }
      
       format.json{ 
-        render json: Post.limit(@limit).offset(@offset).to_json(:include => :user)
+        # render json: Post.limit(@limit).offset(@offset).to_json(:include => :user)
+        render json: Post.limit(@limit).offset(@offset).to_json(:include => {
+        :user => {:except => [:created_at, :updated_at]},
+        :comments => {:only => [:id]}  })
       }
     end
   end

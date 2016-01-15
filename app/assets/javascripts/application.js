@@ -88,11 +88,10 @@ function initPagination(){
 	        }
 	  	}).done(function(data)
 	  	{
-	  		console.log(data);
 	  		$('.post-card').remove();
 	  		for(var x in data){
-				// console.log(data[x]);
 				var card="<div class='col s6 post-card'>"+
+							"<div class='number-comment'><i class='material-icons'>comment</i>"+data[x].comments.length+"</div>"+
 								"<div class='card medium custom'>"+
 									"<a href='/posts/1'>"+
 								 		"<div class='card-image'>"+

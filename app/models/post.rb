@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
-	has_many :comments, dependent: :destroy
+	has_many :comments, dependent: :destroy , counter_cache: true
 
 	validates :file_name, presence: true
 	validates :title, presence: true
