@@ -3,15 +3,17 @@
 		%div.container.user-show
 			%div
 				= image_tag @user.avatar.url, :class => "user-avatar"
-				%span
+				%div
 					= @user.first_name
 					= @user.last_name
-					%h2
-						%span#nbArticlesUser
-							= @user.posts.count
-						articles
+				%div.user-mail
+					= @user.email
 
 %div.container.users-post
+	%h2
+		%span#nbArticlesUser
+			= @user.posts.count
+			articles
 	%div.row
 		- @user.posts.all.each do |post|
 			- if (current_user!=post.user)
