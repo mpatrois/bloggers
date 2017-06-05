@@ -6,7 +6,7 @@ prenomArray=["Jean","Marguerite",'Roberte',"Joseph","Emile","Genevieve","William
 photosArticle=["article1.jpg","article2.jpg","article3.jpg","article4.jpg","article5.jpeg"];
 
 
-User.delete_all
+# User.delete_all
 
 for i in 0..5
 
@@ -14,7 +14,7 @@ for i in 0..5
     prenom=prenomArray[rand(prenomArray.length)];
     mail=nom +"."+ prenom + "@mail.fr";
 
-    User.create([
+    User.create!([
         first_name:nom,
         last_name:prenom,
         email: mail,
@@ -27,7 +27,7 @@ for i in 0..5
 
 end
 
-User.create([
+User.create!([
         first_name:'user',
         last_name:'prenom',
         email: 'user@user.fr',
@@ -48,13 +48,13 @@ User.create([
 
 
 
-Post.delete_all
+# Post.delete_all
 
 for j in 0..12
     photoArticle=photosArticle[rand(photosArticle.length)];
     user_id=1+rand(7);
 
-    Post.create([
+    Post.create!([
         title: Forgery(:lorem_ipsum).words(7, :random=> true),
         header: Forgery(:lorem_ipsum).words(25, :random=> true),
         content:Forgery(:lorem_ipsum).words(330, :random=> true),
@@ -67,7 +67,7 @@ for j in 0..60
     user_id=1+rand(7);
     post_id=1+rand(13)
 
-    Comment.create([
+    Comment.create!([
         content:Forgery(:lorem_ipsum).words(30, :random=> true),
         user_id: user_id,
         post_id: post_id
@@ -75,6 +75,10 @@ for j in 0..60
 
 end
 
+
+puts Comment.count
+puts Post.count
+puts User.count
 # Post.create([
 # 	title: "The Science of Setting and Achieving Goals",
 #     header:"When Angela Duckworth was 27, she left her high-pressure management-consulting job for an even tougher gig: teaching seventh-grade math at a New York City public school.",

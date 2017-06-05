@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @page=0
     @limit=5
     @numberPosts=Post.count
+    @numberPage=1
 
     if(params[:page] && params[:page].is_number?)
       @page=params[:page].to_i > 0 ? params[:page].to_i : 1
@@ -18,17 +19,21 @@ class PostsController < ApplicationController
     end
 
     if(params[:limit] && params[:limit].is_number?)
-      @limit=params[:limit].to_i > 0 ? params[:limit].to_i : 1
+      @limit = params[:limit].to_i > 0 ? params[:limit].to_i : 1
 
-      if(@limit>@numberPosts)
-        @limit=@numberPosts
+      if(@limit>@numberPosts && @numberPosts > 0)
+        @limit = @numberPosts
       end
     end
-
+    
+    # puts @limit
+    
     @mod=(@numberPosts % @limit ==0) ? 0 : 1
-
-    @numberPage=@numberPosts/@limit+@mod
-
+  
+    if(@limit+@mod>0)
+      @numberPage=@numberPosts/@limit+@mod
+    end
+    
     if(@page>@numberPage)
       @page=@numberPage-1
     end
@@ -38,7 +43,6 @@ class PostsController < ApplicationController
       format.html{ @posts = Post.limit(@limit).offset(@offset) }
      
       format.json{ 
-        # render json: Post.limit(@limit).offset(@offset).to_json(:include => :user)
         render json: Post.limit(@limit).offset(@offset).to_json(:include => {
         :user => {:except => [:created_at, :updated_at]},
         :comments => {:only => [:id]}  })
