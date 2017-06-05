@@ -1,6 +1,6 @@
-== Readme
+# Readme
 
-Pour installer le projet  
+Pour installer le projet :  
 bundle install  
 rake db:migrate  
 rake db:setup  
