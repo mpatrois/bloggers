@@ -1,28 +1,17 @@
-== README
+== Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pour installer le projet
+bundle install
+rake db:migrate
+rake db:setup
 
-Things you may want to cover:
+Le fichier seeds.rb peuplera la base.
+Pour vous identifiez vous pouvez utiliser l'utilisateur user dont les informations d'authentifications sont:
+email: 'user@user.fr'
+password: "motdepasse"
 
-* Ruby version
+Une pagination a été faite pour l'index des posts, elle fonctionne en ajax (ou sans si l'utilisateur a désactivé le javascript) 
+et on peut choisir le nombre de résultat par page.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Pour poster un article il faut être inscrit et connecté.
+Pour le modifier et le supprimer il faut en être l'auteur.
