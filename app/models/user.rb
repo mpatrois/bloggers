@@ -10,14 +10,16 @@ class User < ActiveRecord::Base
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
-# 	validates :avatar, presence: true
+	validates :avatar, presence: true
 	
 	
-    before_save :default_values
+    # before_save :default_values
     
-    def default_values
-        self.avatar  = open("public/default.png")
-    end
+    # def default_values
+    #     if(self.avatar == nil)
+    #         self.avatar = open("public/default.png")
+    #     end
+    # end
 
 
 end
